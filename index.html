@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex AutoTech Industries | Precision Automotive Components</title>
+  <meta name="description" content="Apex AutoTech Industries manufactures high-precision B2B automotive components through CNC machining, advanced engineering, and strict quality control.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: {
+              900: '#0A0B0D',
+              800: '#12141A',
+              700: '#1A1D26',
+              600: '#252936',
+            },
+            accent: {
+              DEFAULT: '#D9FF4F',
+              hover: '#C2ED38',
+            },
+            muted: '#8E95A5',
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Feather / Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      background-color: #0A0B0D;
+      color: #F4F5F7;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .bg-tech-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A0B0D;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #222630;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D9FF4F;
+    }
+  </style>
+</head>
+<body class="bg-[#0A0B0D] text-[#F4F5F7] antialiased selection:bg-[#D9FF4F] selection:text-black">
+
+  <!-- 1. NAVBAR -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 border-b border-white/5 bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div style="width:36px; height:36px; background:#111319; border:1px solid rgba(217,255,79,0.4); display:flex; align-items:center; justify-content:center; border-radius:2px;">
+          <div style="width:14px; height:14px; background:#D9FF4F; transform:rotate(45deg);"></div>
+        </div>
+        <div>
+          <div class="font-heading font-bold text-lg sm:text-xl tracking-wider text-[#F4F5F7]">
+            APEX <span class="text-[#D9FF4F]">AUTOTECH</span>
+          </div>
+          <div class="text-[9px] font-mono tracking-widest text-[#8E95A5] hidden sm:block uppercase">
+            Industries • Precision Manufacturing
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#about" class="text-xs font-mono tracking-wider text-[#8E95A5] hover:text-[#D9FF4F] transition-colors">About</a>
+        <a href="#products" class="text-xs font-mono tracking-wider text-[#8E95A5] hover:text-[#D9FF4F] transition-colors">Products</a>
+        <a href="#manufacturing" class="text-xs font-mono tracking-wider text-[#8E95A5] hover:text-[#D9FF4F] transition-colors">Manufacturing</a>
+        <a href="#quality" class="text-xs font-mono tracking-wider text-[#8E95A5] hover:text-[#D9FF4F] transition-colors">Quality</a>
+        <a href="#industries" class="text-xs font-mono tracking-wider text-[#8E95A5] hover:text-[#D9FF4F] transition-colors">Industries</a>
+        <a href="#gallery" class="text-xs font-mono tracking-wider text-[#8E95A5] hover:text-[#D9FF4F] transition-colors">Gallery</a>
+        <a href="#contact" class="text-xs font-mono tracking-wider text-[#8E95A5] hover:text-[#D9FF4F] transition-colors">Contact</a>
+      </nav>
+
+      <!-- CTA -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a href="#contact" class="inline-flex items-center gap-2 bg-[#D9FF4F] hover:bg-[#C2ED38] text-black font-heading font-semibold text-xs tracking-wider px-4 py-2.5 rounded-sm transition-all shadow-md">
+          <span>REQUEST A QUOTE</span>
+          <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center gap-3 lg:hidden">
+        <button id="mobileMenuBtn" class="p-2 text-[#8E95A5] hover:text-white rounded-sm border border-white/10 bg-[#111319]">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden lg:hidden bg-[#0D0E12] border-b border-white/10 px-4 pt-4 pb-6 space-y-3">
+      <a href="#about" class="block text-sm font-mono text-[#8E95A5] hover:text-[#D9FF4F] py-2 border-b border-white/5">About</a>
+      <a href="#products" class="block text-sm font-mono text-[#8E95A5] hover:text-[#D9FF4F] py-2 border-b border-white/5">Products</a>
+      <a href="#manufacturing" class="block text-sm font-mono text-[#8E95A5] hover:text-[#D9FF4F] py-2 border-b border-white/5">Manufacturing</a>
+      <a href="#quality" class="block text-sm font-mono text-[#8E95A5] hover:text-[#D9FF4F] py-2 border-b border-white/5">Quality</a>
+      <a href="#industries" class="block text-sm font-mono text-[#8E95A5] hover:text-[#D9FF4F] py-2 border-b border-white/5">Industries</a>
+      <a href="#gallery" class="block text-sm font-mono text-[#8E95A5] hover:text-[#D9FF4F] py-2 border-b border-white/5">Gallery</a>
+      <a href="#contact" class="block text-sm font-mono text-[#8E95A5] hover:text-[#D9FF4F] py-2 border-b border-white/5">Contact</a>
+      <div class="pt-2">
+        <a href="#contact" class="w-full flex items-center justify-center gap-2 bg-[#D9FF4F] text-black font-heading font-bold text-xs px-4 py-3 rounded-sm">
+          <span>REQUEST A QUOTE</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. HERO -->
+  <section class="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 flex flex-col justify-between bg-tech-grid overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- Left Text -->
+        <div class="lg:col-span-6 space-y-6 sm:space-y-8 z-20">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#111319] border border-white/10 text-[11px] font-mono text-[#D9FF4F] tracking-widest uppercase">
+            <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+            <span>PRECISION AUTOMOTIVE MANUFACTURING</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-[#F4F5F7] tracking-tight leading-[1.1]">
+            Precision Engineering <br>
+            <span class="text-[#D9FF4F]">for the Automotive</span> Industry
+          </h1>
+
+          <div class="text-xs font-mono tracking-widest text-[#D9FF4F]/80 uppercase">
+            // Precision built for motion.
+          </div>
+
+          <p class="text-sm sm:text-base text-[#8E95A5] leading-relaxed max-w-xl">
+            Apex AutoTech Industries delivers precision-engineered automotive components through advanced manufacturing, controlled processes and a commitment to consistent quality.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#products" class="inline-flex items-center justify-center gap-2 bg-[#D9FF4F] hover:bg-[#C2ED38] text-black font-heading font-bold text-xs tracking-wider px-6 py-3.5 rounded-sm transition-all shadow-lg">
+              <span>EXPLORE PRODUCTS</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-[#111319] hover:bg-[#1A1D26] text-[#F4F5F7] font-heading font-semibold text-xs tracking-wider px-6 py-3.5 rounded-sm border border-white/15 hover:border-white/30 transition-all">
+              <span>REQUEST A QUOTE</span>
+            </a>
+          </div>
+
+          <div class="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 font-mono">
+            <div>
+              <div class="text-xs text-[#8E95A5]">PROCESS</div>
+              <div class="text-sm font-semibold text-white">5-Axis CNC</div>
+            </div>
+            <div>
+              <div class="text-xs text-[#8E95A5]">TOLERANCE</div>
+              <div class="text-sm font-semibold text-[#D9FF4F]">±0.002mm</div>
+            </div>
+            <div>
+              <div class="text-xs text-[#8E95A5]">INSPECTION</div>
+              <div class="text-sm font-semibold text-white">100% CMM</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 3D Scene Canvas Container -->
+        <div class="lg:col-span-6 z-10">
+          <div class="relative w-full h-[380px] sm:h-[480px] lg:h-[550px] rounded-lg overflow-hidden border border-white/10 bg-[#0E1015] shadow-2xl">
+            
+            <!-- HUD Overlay -->
+            <div class="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-4 sm:p-6 select-none">
+              <div class="flex items-center gap-2 text-xs font-mono text-[#8E95A5] bg-[#0A0B0D]/80 backdrop-blur-md px-3 py-1.5 border border-white/10 rounded-sm w-fit">
+                <span class="w-2 h-2 rounded-full bg-[#D9FF4F] animate-pulse"></span>
+                <span class="text-[#F4F5F7] font-semibold">PRECISION COMPONENT</span>
+                <span class="text-white/40">/</span>
+                <span>A-01</span>
+              </div>
+
+              <div class="hidden sm:flex flex-col items-end text-[11px] font-mono text-[#8E95A5] bg-[#0A0B0D]/80 backdrop-blur-md px-3 py-2 border border-white/10 rounded-sm w-fit self-end">
+                <div class="text-white/90 font-medium">CAD SPEC: ISO-2768-mK</div>
+                <div class="text-[#D9FF4F]">TOLERANCE: ±0.002mm</div>
+              </div>
+
+              <div class="self-end text-[11px] font-mono tracking-widest text-[#D9FF4F] bg-[#111319] px-3 py-1 border border-[#D9FF4F]/30 rounded-sm">
+                APEX ENGINEERING v4.2
+              </div>
+            </div>
+
+            <!-- 3D Canvas -->
+            <canvas id="threeCanvas" class="w-full h-full block"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="w-full flex justify-center pt-8">
+      <a href="#about" class="flex flex-col items-center gap-1.5 text-[10px] font-mono text-[#8E95A5] hover:text-[#D9FF4F] transition-colors">
+        <span class="tracking-widest uppercase">SCROLL TO EXPLORE</span>
+        <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- 3. COMPANY INTRODUCTION -->
+  <section id="about" class="py-20 lg:py-32 bg-[#0A0B0D] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <div class="text-xs font-mono tracking-widest text-[#D9FF4F] uppercase mb-3">// COMPANY OVERVIEW</div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#F4F5F7] tracking-tight">Engineering that moves industries.</h2>
+        <p class="mt-4 text-base sm:text-lg text-[#8E95A5] leading-relaxed">
+          Apex AutoTech Industries is a B2B precision automotive component manufacturer supplying tier-1 suppliers and vehicle OEMs. We transform high-grade alloy raw materials into ultra-tight tolerance components for demanding powertrain, chassis, and drivetrain applications.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        <div class="lg:col-span-7 relative rounded-md overflow-hidden border border-white/10 bg-[#111319] min-h-[320px]">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80" alt="Apex AutoTech Manufacturing Facility" class="w-full h-full object-cover filter brightness-90">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0A0B0D] via-transparent to-transparent opacity-80"></div>
+          <div class="absolute bottom-6 left-6 right-6 p-4 bg-[#0A0B0D]/85 backdrop-blur-md rounded-sm border border-white/10 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-heading font-bold text-white">AUTOMATED CELL CAPACITY</div>
+              <div class="text-[11px] font-mono text-[#8E95A5]">Multi-Axis CNC & Robotic Inspection</div>
+            </div>
+            <div class="text-right font-mono text-xs text-[#D9FF4F]">QUALITY CONTROLLED</div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+          <div class="bg-[#111319] border border-white/8 p-5 rounded-sm">
+            <div class="text-xs font-mono text-[#D9FF4F] font-semibold mb-1">01</div>
+            <h3 class="text-base font-heading font-semibold text-white">Precision Engineering</h3>
+            <p class="mt-1 text-xs sm:text-sm text-[#8E95A5]">Micron-level tolerances on complex 3D geometry.</p>
+          </div>
+          <div class="bg-[#111319] border border-white/8 p-5 rounded-sm">
+            <div class="text-xs font-mono text-[#D9FF4F] font-semibold mb-1">02</div>
+            <h3 class="text-base font-heading font-semibold text-white">Quality Control</h3>
+            <p class="mt-1 text-xs sm:text-sm text-[#8E95A5]">Comprehensive CMM testing and automated optical inspection.</p>
+          </div>
+          <div class="bg-[#111319] border border-white/8 p-5 rounded-sm">
+            <div class="text-xs font-mono text-[#D9FF4F] font-semibold mb-1">03</div>
+            <h3 class="text-base font-heading font-semibold text-white">Advanced Manufacturing</h3>
+            <p class="mt-1 text-xs sm:text-sm text-[#8E95A5]">5-axis CNC machining, robotic welding & thermal processing.</p>
+          </div>
+          <div class="bg-[#111319] border border-white/8 p-5 rounded-sm">
+            <div class="text-xs font-mono text-[#D9FF4F] font-semibold mb-1">04</div>
+            <h3 class="text-base font-heading font-semibold text-white">Custom Solutions</h3>
+            <p class="mt-1 text-xs sm:text-sm text-[#8E95A5]">Co-engineering from prototype development to series production.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PRODUCTS -->
+  <section id="products" class="py-20 lg:py-32 bg-[#0A0B0D] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <div class="text-xs font-mono tracking-widest text-[#D9FF4F] uppercase mb-3">// AUTOMOTIVE PRODUCT MATRIX</div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#F4F5F7] tracking-tight">Built for the road ahead.</h2>
+        </div>
+        <p class="text-sm text-[#8E95A5] max-w-md">Custom engineered and series manufactured automotive components adhering to international standards.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        
+        <!-- Card 1 -->
+        <div onclick="openProductModal(0)" class="bg-[#111319] border border-white/10 hover:border-[#D9FF4F]/50 rounded-sm overflow-hidden flex flex-col justify-between group cursor-pointer transition-all duration-300 transform hover:-translate-y-1">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0A0B0D]">
+              <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80" alt="Precision Engine Components" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-3 left-3 bg-[#0A0B0D]/80 px-2.5 py-1 text-[10px] font-mono text-[#D9FF4F] border border-white/10">Engine Systems</div>
+              <div class="absolute top-3 right-3 text-sm font-mono font-bold text-white/50">01</div>
+            </div>
+            <div class="p-6 space-y-2">
+              <h3 class="text-xl font-heading font-bold text-[#F4F5F7] group-hover:text-[#D9FF4F] transition-colors">01 — Precision Engine Components</h3>
+              <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed">High-tolerance pistons, camshafts, valve guides, and timing components engineered for heavy thermal stress.</p>
+            </div>
+          </div>
+          <div class="px-6 py-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[#8E95A5] group-hover:text-white">
+            <span>VIEW SPECIFICATIONS</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-[#D9FF4F]"></i>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div onclick="openProductModal(1)" class="bg-[#111319] border border-white/10 hover:border-[#D9FF4F]/50 rounded-sm overflow-hidden flex flex-col justify-between group cursor-pointer transition-all duration-300 transform hover:-translate-y-1">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0A0B0D]">
+              <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="CNC Machined Components" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-3 left-3 bg-[#0A0B0D]/80 px-2.5 py-1 text-[10px] font-mono text-[#D9FF4F] border border-white/10">Machined Parts</div>
+              <div class="absolute top-3 right-3 text-sm font-mono font-bold text-white/50">02</div>
+            </div>
+            <div class="p-6 space-y-2">
+              <h3 class="text-xl font-heading font-bold text-[#F4F5F7] group-hover:text-[#D9FF4F] transition-colors">02 — CNC Machined Components</h3>
+              <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed">Complex 5-axis milled and turned structural automotive housings, brackets, and fluid manifold components.</p>
+            </div>
+          </div>
+          <div class="px-6 py-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[#8E95A5] group-hover:text-white">
+            <span>VIEW SPECIFICATIONS</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-[#D9FF4F]"></i>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div onclick="openProductModal(2)" class="bg-[#111319] border border-white/10 hover:border-[#D9FF4F]/50 rounded-sm overflow-hidden flex flex-col justify-between group cursor-pointer transition-all duration-300 transform hover:-translate-y-1">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0A0B0D]">
+              <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80" alt="Transmission Components" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-3 left-3 bg-[#0A0B0D]/80 px-2.5 py-1 text-[10px] font-mono text-[#D9FF4F] border border-white/10">Drivetrain</div>
+              <div class="absolute top-3 right-3 text-sm font-mono font-bold text-white/50">03</div>
+            </div>
+            <div class="p-6 space-y-2">
+              <h3 class="text-xl font-heading font-bold text-[#F4F5F7] group-hover:text-[#D9FF4F] transition-colors">03 — Transmission Components</h3>
+              <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed">High-torque planetary gears, splined shafts, synchronizer rings, and differential gear assemblies.</p>
+            </div>
+          </div>
+          <div class="px-6 py-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[#8E95A5] group-hover:text-white">
+            <span>VIEW SPECIFICATIONS</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-[#D9FF4F]"></i>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div onclick="openProductModal(3)" class="bg-[#111319] border border-white/10 hover:border-[#D9FF4F]/50 rounded-sm overflow-hidden flex flex-col justify-between group cursor-pointer transition-all duration-300 transform hover:-translate-y-1">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0A0B0D]">
+              <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80" alt="Brake System Components" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-3 left-3 bg-[#0A0B0D]/80 px-2.5 py-1 text-[10px] font-mono text-[#D9FF4F] border border-white/10">Chassis & Safety</div>
+              <div class="absolute top-3 right-3 text-sm font-mono font-bold text-white/50">04</div>
+            </div>
+            <div class="p-6 space-y-2">
+              <h3 class="text-xl font-heading font-bold text-[#F4F5F7] group-hover:text-[#D9FF4F] transition-colors">04 — Brake System Components</h3>
+              <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed">Ventilated rotor hubs, caliper pistons, master cylinder bodies, and anti-lock brake system manifolds.</p>
+            </div>
+          </div>
+          <div class="px-6 py-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[#8E95A5] group-hover:text-white">
+            <span>VIEW SPECIFICATIONS</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-[#D9FF4F]"></i>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div onclick="openProductModal(4)" class="bg-[#111319] border border-white/10 hover:border-[#D9FF4F]/50 rounded-sm overflow-hidden flex flex-col justify-between group cursor-pointer transition-all duration-300 transform hover:-translate-y-1">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0A0B0D]">
+              <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=800&q=80" alt="Suspension Components" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-3 left-3 bg-[#0A0B0D]/80 px-2.5 py-1 text-[10px] font-mono text-[#D9FF4F] border border-white/10">Chassis & Steering</div>
+              <div class="absolute top-3 right-3 text-sm font-mono font-bold text-white/50">05</div>
+            </div>
+            <div class="p-6 space-y-2">
+              <h3 class="text-xl font-heading font-bold text-[#F4F5F7] group-hover:text-[#D9FF4F] transition-colors">05 — Suspension Components</h3>
+              <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed">Forged control arms, sway bar links, strut mounts, and precision ball joint housings.</p>
+            </div>
+          </div>
+          <div class="px-6 py-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[#8E95A5] group-hover:text-white">
+            <span>VIEW SPECIFICATIONS</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-[#D9FF4F]"></i>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div onclick="openProductModal(5)" class="bg-[#111319] border border-white/10 hover:border-[#D9FF4F]/50 rounded-sm overflow-hidden flex flex-col justify-between group cursor-pointer transition-all duration-300 transform hover:-translate-y-1">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#0A0B0D]">
+              <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Custom Automotive Components" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-3 left-3 bg-[#0A0B0D]/80 px-2.5 py-1 text-[10px] font-mono text-[#D9FF4F] border border-white/10">Bespoke Engineering</div>
+              <div class="absolute top-3 right-3 text-sm font-mono font-bold text-white/50">06</div>
+            </div>
+            <div class="p-6 space-y-2">
+              <h3 class="text-xl font-heading font-bold text-[#F4F5F7] group-hover:text-[#D9FF4F] transition-colors">06 — Custom Automotive Components</h3>
+              <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed">Tailored prototype to production parts developed collaboratively to exact OEM engineering specifications.</p>
+            </div>
+          </div>
+          <div class="px-6 py-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[#8E95A5] group-hover:text-white">
+            <span>VIEW SPECIFICATIONS</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-[#D9FF4F]"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MANUFACTURING CAPABILITIES -->
+  <section id="manufacturing" class="py-20 lg:py-32 bg-[#0E1015] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <div class="text-xs font-mono tracking-widest text-[#D9FF4F] uppercase mb-3">// MANUFACTURING CAPABILITIES</div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#F4F5F7] tracking-tight">From raw material to finished part.</h2>
+        <p class="mt-4 text-base text-[#8E95A5]">Our end-to-end production workflow integrates high-precision 5-axis CNC machining, controlled heat treatment, automated surface finishing, and continuous CMM quality inspection.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5 space-y-4">
+          <div onclick="switchMfgStep(0)" id="mfgStep0" class="p-5 rounded-sm border bg-[#151821] border-[#D9FF4F] cursor-pointer">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-mono px-2 py-0.5 bg-[#D9FF4F] text-black font-bold">01</span>
+                <h3 class="text-lg font-heading font-bold text-[#D9FF4F]">01 CNC Machining</h3>
+              </div>
+            </div>
+            <p class="mt-2 text-xs sm:text-sm text-[#8E95A5]">Multi-axis milling and turning centers capable of continuous tight-tolerance machining across aluminum and steel alloys.</p>
+          </div>
+
+          <div onclick="switchMfgStep(1)" id="mfgStep1" class="p-5 rounded-sm border bg-[#111319]/70 border-white/5 cursor-pointer">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-mono px-2 py-0.5 border text-[#8E95A5] border-white/10">02</span>
+                <h3 class="text-lg font-heading font-bold text-white">02 Surface Finishing</h3>
+              </div>
+            </div>
+            <p class="mt-2 text-xs sm:text-sm text-[#8E95A5]">Automated deburring, shot peening, anodizing, electro-plating, and micro-honing for friction reduction.</p>
+          </div>
+
+          <div onclick="switchMfgStep(2)" id="mfgStep2" class="p-5 rounded-sm border bg-[#111319]/70 border-white/5 cursor-pointer">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-mono px-2 py-0.5 border text-[#8E95A5] border-white/10">03</span>
+                <h3 class="text-lg font-heading font-bold text-white">03 Assembly</h3>
+              </div>
+            </div>
+            <p class="mt-2 text-xs sm:text-sm text-[#8E95A5]">Cleanroom assembly environment with automated press-fitting, torque verification, and sub-assembly leak detection.</p>
+          </div>
+
+          <div onclick="switchMfgStep(3)" id="mfgStep3" class="p-5 rounded-sm border bg-[#111319]/70 border-white/5 cursor-pointer">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-mono px-2 py-0.5 border text-[#8E95A5] border-white/10">04</span>
+                <h3 class="text-lg font-heading font-bold text-white">04 Inspection</h3>
+              </div>
+            </div>
+            <p class="mt-2 text-xs sm:text-sm text-[#8E95A5]">Integrated Zeiss CMM measurement, surface profilometry, magnetic particle inspection, and optical feature verification.</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="relative rounded-md overflow-hidden border border-white/10 bg-[#0A0B0D] aspect-[4/3]">
+            <img id="mfgImage" src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=1000&q=80" alt="CNC Machining" class="w-full h-full object-cover filter brightness-90">
+            <div class="absolute bottom-6 left-6 right-6 p-4 bg-[#0A0B0D]/90 border border-white/10 rounded-sm flex items-center justify-between">
+              <div>
+                <div id="mfgTag" class="text-xs font-mono text-[#D9FF4F]">STAGE 01 OF 04</div>
+                <div id="mfgTitle" class="text-sm font-heading font-bold text-white">CNC Machining</div>
+              </div>
+              <div class="text-right text-[11px] font-mono text-[#8E95A5]">APEX QUALITY ASSURED</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. QUALITY -->
+  <section id="quality" class="py-20 lg:py-32 bg-[#0A0B0D] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <div class="text-xs font-mono tracking-widest text-[#D9FF4F] uppercase mb-3">// QUALITY CONTROL ARCHITECTURE</div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#F4F5F7] tracking-tight">Quality isn't a final step.</h2>
+        <p class="mt-4 text-base text-[#8E95A5]">At Apex AutoTech, quality is embedded into every operational step—from incoming raw material spectral testing to telemetry-monitored CNC cutting and CMM audits.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-[#111319] border border-white/10 p-6 rounded-sm">
+          <div class="w-12 h-12 rounded-sm bg-[#0A0B0D] border border-white/10 flex items-center justify-center mb-6 text-[#D9FF4F]">
+            <i data-lucide="activity" class="w-6 h-6"></i>
+          </div>
+          <div class="text-xs font-mono text-[#8E95A5] mb-1">METHOD 01</div>
+          <h3 class="text-lg font-heading font-bold text-[#F4F5F7] mb-2">Process Control</h3>
+          <p class="text-xs sm:text-sm text-[#8E95A5]">Statistical Process Control (SPC) monitored across real-time telemetry on every machining cell.</p>
+        </div>
+
+        <div class="bg-[#111319] border border-white/10 p-6 rounded-sm">
+          <div class="w-12 h-12 rounded-sm bg-[#0A0B0D] border border-white/10 flex items-center justify-center mb-6 text-[#D9FF4F]">
+            <i data-lucide="target" class="w-6 h-6"></i>
+          </div>
+          <div class="text-xs font-mono text-[#8E95A5] mb-1">METHOD 02</div>
+          <h3 class="text-lg font-heading font-bold text-[#F4F5F7] mb-2">Precision</h3>
+          <p class="text-xs sm:text-sm text-[#8E95A5]">Temperature-controlled measuring rooms equipped with Zeiss Coordinate Measuring Machines (CMM).</p>
+        </div>
+
+        <div class="bg-[#111319] border border-white/10 p-6 rounded-sm">
+          <div class="w-12 h-12 rounded-sm bg-[#0A0B0D] border border-white/10 flex items-center justify-center mb-6 text-[#D9FF4F]">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <div class="text-xs font-mono text-[#8E95A5] mb-1">METHOD 03</div>
+          <h3 class="text-lg font-heading font-bold text-[#F4F5F7] mb-2">Inspection</h3>
+          <p class="text-xs sm:text-sm text-[#8E95A5]">In-line laser scanning and automated vision systems inspect critical dimensions prior to packaging.</p>
+        </div>
+
+        <div class="bg-[#111319] border border-white/10 p-6 rounded-sm">
+          <div class="w-12 h-12 rounded-sm bg-[#0A0B0D] border border-white/10 flex items-center justify-center mb-6 text-[#D9FF4F]">
+            <i data-lucide="file-text" class="w-6 h-6"></i>
+          </div>
+          <div class="text-xs font-mono text-[#8E95A5] mb-1">METHOD 04</div>
+          <h3 class="text-lg font-heading font-bold text-[#F4F5F7] mb-2">Traceability</h3>
+          <p class="text-xs sm:text-sm text-[#8E95A5]">Direct part laser marking linking finished components back to raw material heat numbers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. INDUSTRIES SERVED -->
+  <section id="industries" class="py-20 lg:py-32 bg-[#0E1015] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-16">
+        <div class="text-xs font-mono tracking-widest text-[#D9FF4F] uppercase mb-3">// TARGET SECTORS</div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#F4F5F7] tracking-tight">Built for demanding applications.</h2>
+        <p class="mt-4 text-base text-[#8E95A5]">Engineering component solutions tailored for high-volume automotive OEMs and Tier-1 suppliers across diverse mobility sectors.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-[#111319] border border-white/10 p-6 rounded-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <i data-lucide="car" class="w-6 h-6 text-[#D9FF4F]"></i>
+              <span class="text-xs font-mono text-[#8E95A5]">SECTOR 01</span>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-[#F4F5F7] mb-2">Passenger Vehicles</h3>
+            <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed mb-6">Engine, transmission, and chassis components built for high-volume sedan and SUV platforms.</p>
+          </div>
+          <div class="pt-4 border-t border-white/5 font-mono text-[11px] text-[#D9FF4F]/90 bg-[#0A0B0D]/50 px-3 py-2 rounded-sm">High durability • NVH optimized</div>
+        </div>
+
+        <div class="bg-[#111319] border border-white/10 p-6 rounded-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <i data-lucide="truck" class="w-6 h-6 text-[#D9FF4F]"></i>
+              <span class="text-xs font-mono text-[#8E95A5]">SECTOR 02</span>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-[#F4F5F7] mb-2">Commercial Vehicles</h3>
+            <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed mb-6">Heavy-duty drivetrain and braking components engineered for long-haul trucks and buses.</p>
+          </div>
+          <div class="pt-4 border-t border-white/5 font-mono text-[11px] text-[#D9FF4F]/90 bg-[#0A0B0D]/50 px-3 py-2 rounded-sm">Extreme load capacity • High thermal tolerance</div>
+        </div>
+
+        <div class="bg-[#111319] border border-white/10 p-6 rounded-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <i data-lucide="zap" class="w-6 h-6 text-[#D9FF4F]"></i>
+              <span class="text-xs font-mono text-[#8E95A5]">SECTOR 03</span>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-[#F4F5F7] mb-2">Electric Mobility</h3>
+            <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed mb-6">Lightweight aluminum housings and precision reduction gears for modern EV powertrains.</p>
+          </div>
+          <div class="pt-4 border-t border-white/5 font-mono text-[11px] text-[#D9FF4F]/90 bg-[#0A0B0D]/50 px-3 py-2 rounded-sm">Low mass • High RPM quiet meshing</div>
+        </div>
+
+        <div class="bg-[#111319] border border-white/10 p-6 rounded-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <i data-lucide="hard-hat" class="w-6 h-6 text-[#D9FF4F]"></i>
+              <span class="text-xs font-mono text-[#8E95A5]">SECTOR 04</span>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-[#F4F5F7] mb-2">Industrial Equipment</h3>
+            <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed mb-6">Hydraulic manifolds and high-torque mechanical linkages for heavy construction equipment.</p>
+          </div>
+          <div class="pt-4 border-t border-white/5 font-mono text-[11px] text-[#D9FF4F]/90 bg-[#0A0B0D]/50 px-3 py-2 rounded-sm">High pressure rating • Wear-resistant</div>
+        </div>
+
+        <div class="bg-[#111319] border border-white/10 p-6 rounded-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <i data-lucide="cpu" class="w-6 h-6 text-[#D9FF4F]"></i>
+              <span class="text-xs font-mono text-[#8E95A5]">SECTOR 05</span>
+            </div>
+            <h3 class="text-xl font-heading font-bold text-[#F4F5F7] mb-2">Automotive Systems</h3>
+            <p class="text-xs sm:text-sm text-[#8E95A5] leading-relaxed mb-6">Sub-system assemblies for tier-1 suppliers, including steering gearboxes and fluid pumps.</p>
+          </div>
+          <div class="pt-4 border-t border-white/5 font-mono text-[11px] text-[#D9FF4F]/90 bg-[#0A0B0D]/50 px-3 py-2 rounded-sm">Tight tolerance • Sub-assembly ready</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. GALLERY -->
+  <section id="gallery" class="py-20 lg:py-32 bg-[#0A0B0D] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="text-xs font-mono tracking-widest text-[#D9FF4F] uppercase mb-3">// FACILITY & GALLERY</div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#F4F5F7] tracking-tight">Precision in motion.</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="aspect-[4/3] rounded-sm overflow-hidden bg-[#111319] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="CNC Milling" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-[4/3] rounded-sm overflow-hidden bg-[#111319] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80" alt="Gear Transmission" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-[4/3] rounded-sm overflow-hidden bg-[#111319] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" alt="Automated Assembly" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-[4/3] rounded-sm overflow-hidden bg-[#111319] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80" alt="Engine Valves" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-[4/3] rounded-sm overflow-hidden bg-[#111319] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="CMM Quality Audit" class="w-full h-full object-cover">
+        </div>
+        <div class="aspect-[4/3] rounded-sm overflow-hidden bg-[#111319] border border-white/10">
+          <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80" alt="Engine Workspace" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CONTACT / REQUEST A QUOTE -->
+  <section id="contact" class="py-20 lg:py-32 bg-[#0E1015] border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <div class="lg:col-span-5 space-y-8">
+          <div>
+            <div class="text-xs font-mono tracking-widest text-[#D9FF4F] uppercase mb-3">// B2B PARTNERSHIP & QUOTATIONS</div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-[#F4F5F7] tracking-tight">Let's build what's next.</h2>
+            <p class="mt-4 text-sm sm:text-base text-[#8E95A5] leading-relaxed">
+              Connect with our automotive engineering team for technical component consultations, DFM evaluation, and production quotation requests.
+            </p>
+          </div>
+
+          <div class="space-y-4 font-mono text-xs">
+            <div class="flex items-start gap-4 p-4 rounded-sm bg-[#111319] border border-white/10">
+              <i data-lucide="mail" class="w-5 h-5 text-[#D9FF4F]"></i>
+              <div>
+                <div class="text-[#8E95A5]">ENGINEERING INQUIRIES</div>
+                <div class="text-white font-semibold">engineering@apexautotech.com</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-sm bg-[#111319] border border-white/10">
+              <i data-lucide="phone" class="w-5 h-5 text-[#D9FF4F]"></i>
+              <div>
+                <div class="text-[#8E95A5]">GLOBAL SALES DIRECT LINE</div>
+                <div class="text-white font-semibold">+1 (800) 555-APEX</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-4 rounded-sm bg-[#111319] border border-white/10">
+              <i data-lucide="map-pin" class="w-5 h-5 text-[#D9FF4F]"></i>
+              <div>
+                <div class="text-[#8E95A5]">ADVANCED MANUFACTURING CENTER</div>
+                <div class="text-white font-semibold">100 Precision Way, Industrial Tech Park</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="bg-[#111319] border border-white/10 p-6 sm:p-8 rounded-md shadow-2xl">
+            <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+              <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                <h3 class="text-xl font-heading font-bold text-white">Request a Technical Quotation</h3>
+                <span class="text-[11px] font-mono text-[#D9FF4F]">FORM REF / RFQ-2026</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-mono text-[#8E95A5] mb-2">FULL NAME *</label>
+                  <input type="text" id="inputName" required placeholder="e.g. Robert Vance" class="w-full bg-[#0A0B0D] border border-white/10 text-white text-sm px-4 py-3 rounded-sm outline-none focus:border-[#D9FF4F]">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-[#8E95A5] mb-2">COMPANY / OEM *</label>
+                  <input type="text" id="inputCompany" required placeholder="e.g. Apex Dynamics Corp" class="w-full bg-[#0A0B0D] border border-white/10 text-white text-sm px-4 py-3 rounded-sm outline-none focus:border-[#D9FF4F]">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs font-mono text-[#8E95A5] mb-2">BUSINESS EMAIL *</label>
+                  <input type="email" id="inputEmail" required placeholder="e.g. r.vance@company.com" class="w-full bg-[#0A0B0D] border border-white/10 text-white text-sm px-4 py-3 rounded-sm outline-none focus:border-[#D9FF4F]">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-[#8E95A5] mb-2">PHONE NUMBER</label>
+                  <input type="tel" id="inputPhone" placeholder="e.g. +1 (555) 019-2834" class="w-full bg-[#0A0B0D] border border-white/10 text-white text-sm px-4 py-3 rounded-sm outline-none focus:border-[#D9FF4F]">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono text-[#8E95A5] mb-2">COMPONENT REQUIREMENT & SPECIFICATIONS *</label>
+                <textarea id="inputReq" rows="4" required placeholder="Specify material grades, target volumes, tolerances, or project timeline..." class="w-full bg-[#0A0B0D] border border-white/10 text-white text-sm px-4 py-3 rounded-sm outline-none focus:border-[#D9FF4F] resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full flex items-center justify-center gap-2 bg-[#D9FF4F] hover:bg-[#C2ED38] text-black font-heading font-bold text-xs tracking-wider px-6 py-4 rounded-sm transition-all shadow-lg">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>SEND ENQUIRY</span>
+              </button>
+            </form>
+
+            <div id="successState" class="hidden py-12 text-center space-y-4">
+              <div class="w-16 h-16 bg-[#D9FF4F]/10 border border-[#D9FF4F] text-[#D9FF4F] rounded-full flex items-center justify-center mx-auto">
+                <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-2xl font-heading font-bold text-white">Enquiry Received Successfully</h3>
+              <p class="text-sm text-[#8E95A5] max-w-md mx-auto">Thank you for contacting Apex AutoTech Industries. Our sales engineering team has logged your request.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FOOTER -->
+  <footer class="bg-[#07080A] text-[#8E95A5] border-t border-white/10 pt-16 pb-12 font-mono text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        <div class="md:col-span-5 space-y-4">
+          <div class="font-heading font-bold text-lg text-[#F4F5F7]">
+            APEX <span class="text-[#D9FF4F]">AUTOTECH INDUSTRIES</span>
+          </div>
+          <p class="text-sm font-sans text-[#8E95A5]">"Precision Components. Reliable Performance."</p>
+          <p class="text-xs text-white/40 font-sans">Precision B2B automotive components manufacturing engineered for global automotive OEMs and Tier-1 suppliers.</p>
+        </div>
+
+        <div class="md:col-span-4 space-y-2">
+          <div class="text-xs text-white font-semibold uppercase mb-2">DIRECTORY</div>
+          <div class="grid grid-cols-2 gap-2">
+            <a href="#about" class="hover:text-[#D9FF4F]">About Us</a>
+            <a href="#products" class="hover:text-[#D9FF4F]">Products</a>
+            <a href="#manufacturing" class="hover:text-[#D9FF4F]">Manufacturing</a>
+            <a href="#quality" class="hover:text-[#D9FF4F]">Quality</a>
+            <a href="#industries" class="hover:text-[#D9FF4F]">Industries</a>
+            <a href="#contact" class="hover:text-[#D9FF4F]">Contact</a>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-2">
+          <div class="text-xs text-white font-semibold uppercase mb-2">COMPLIANCE</div>
+          <div class="text-[11px] text-[#8E95A5] space-y-1">
+            <div>• 5-Axis Precision Milling</div>
+            <div>• 100% CMM Audit</div>
+            <div>• Laser Serialization</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+        <div>© 2026 Apex AutoTech Industries. All rights reserved.</div>
+        <div class="text-white/40">DEMO PRESENTATION SYSTEM</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Modal Popup -->
+  <div id="productModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="relative w-full max-w-2xl bg-[#111319] border border-white/15 rounded-md p-6 space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <h3 id="modalTitle" class="text-xl font-heading font-bold text-white">Product Specs</h3>
+        <button onclick="closeProductModal()" class="text-[#8E95A5] hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <p id="modalDesc" class="text-sm text-[#8E95A5]"></p>
+      <div id="modalSpecs" class="p-4 bg-[#0A0B0D] border border-white/10 rounded-sm font-mono text-xs space-y-2"></div>
+      <div class="pt-2 flex justify-end">
+        <a href="#contact" onclick="closeProductModal()" class="bg-[#D9FF4F] text-black font-heading font-bold text-xs px-4 py-2 rounded-sm">INQUIRE FOR THIS PART</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Sticky Navbar background change
+    window.addEventListener('scroll', function() {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 20) {
+        nav.classList.add('bg-[#0A0B0D]/90', 'backdrop-blur-md', 'shadow-xl');
+        nav.classList.remove('bg-transparent');
+      } else {
+        nav.classList.remove('bg-[#0A0B0D]/90', 'backdrop-blur-md', 'shadow-xl');
+        nav.classList.add('bg-transparent');
+      }
+    });
+
+    // Mobile menu toggle
+    const btn = document.getElementById('mobileMenuBtn');
+    const drawer = document.getElementById('mobileDrawer');
+    btn.addEventListener('click', () => {
+      drawer.classList.toggle('hidden');
+    });
+
+    // Product Modal Data
+    const productsData = [
+      { name: "Precision Engine Components", desc: "High-tolerance pistons, camshafts, valve guides, and timing components engineered for heavy thermal and mechanical stress.", specs: "Material: Forged Al 7075 / Steel 4340 | Tolerance: ±0.002 mm | Finish: Ra 0.1 µm superfinished" },
+      { name: "CNC Machined Components", desc: "Complex 5-axis milled and turned structural automotive housings, brackets, and fluid manifold components.", specs: "Material: Aircraft Grade Aluminum / Titanium | Tolerance: ±0.005 mm | Finish: Anodized" },
+      { name: "Transmission Components", desc: "High-torque planetary gears, splined shafts, synchronizer rings, and differential gear assemblies.", specs: "Material: Carburized alloy steel 8620H | Tolerance: AGMA Class 12 | Finish: Isotropic Superfinished" },
+      { name: "Brake System Components", desc: "Ventilated rotor hubs, caliper pistons, master cylinder bodies, and anti-lock brake system manifolds.", specs: "Material: G3000 Grey Iron / Al 6061 | Runout: < 0.008 mm | Finish: E-coat Anti-corrosion" },
+      { name: "Suspension Components", desc: "Forged control arms, sway bar links, strut mounts, and precision ball joint housings.", specs: "Material: Forged Al 6082-T6 | Tolerance: ±0.01 mm | Finish: Hard Anodized" },
+      { name: "Custom Automotive Components", desc: "Tailored prototype to production parts developed collaboratively to exact OEM engineering specifications.", specs: "Material: Custom Alloys | Tolerance: Per Engineering Drawing | Volume: Prototype to Series" }
+    ];
+
+    function openProductModal(idx) {
+      const item = productsData[idx];
+      document.getElementById('modalTitle').innerText = item.name;
+      document.getElementById('modalDesc').innerText = item.desc;
+      document.getElementById('modalSpecs').innerText = item.specs;
+      document.getElementById('productModal').classList.remove('hidden');
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.add('hidden');
+    }
+
+    // Manufacturing capability step switch
+    const mfgSteps = [
+      { name: "CNC Machining", tag: "STAGE 01 OF 04", img: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=1000&q=80" },
+      { name: "Surface Finishing", tag: "STAGE 02 OF 04", img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80" },
+      { name: "Assembly & Sub-Systems", tag: "STAGE 03 OF 04", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80" },
+      { name: "Inspection & Quality Audit", tag: "STAGE 04 OF 04", img: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1000&q=80" }
+    ];
+
+    function switchMfgStep(idx) {
+      for(let i=0; i<4; i++) {
+        const el = document.getElementById('mfgStep' + i);
+        if (i === idx) {
+          el.className = "p-5 rounded-sm border bg-[#151821] border-[#D9FF4F] cursor-pointer";
+        } else {
+          el.className = "p-5 rounded-sm border bg-[#111319]/70 border-white/5 cursor-pointer";
+        }
+      }
+      document.getElementById('mfgImage').src = mfgSteps[idx].img;
+      document.getElementById('mfgTag').innerText = mfgSteps[idx].tag;
+      document.getElementById('mfgTitle').innerText = mfgSteps[idx].name;
+    }
+
+    // Form submission
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contactForm').classList.add('hidden');
+      document.getElementById('successState').classList.remove('hidden');
+    }
+
+    // -------------------------------------------------------------
+    // THREE.JS 3D INTERACTIVE HERO OBJECT
+    // -------------------------------------------------------------
+    const canvas = document.getElementById('threeCanvas');
+    const scene = new THREE.Scene();
+    
+    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+    camera.position.set(0, 1.2, 5.5);
+
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambientLight);
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
+    keyLight.position.set(5, 8, 5);
+    scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(0x8e95a5, 0.8);
+    fillLight.position.set(-5, 3, -5);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.SpotLight(0xd9ff4f, 2.5);
+    rimLight.position.set(0, 5, -4);
+    scene.add(rimLight);
+
+    // 3D Mechanical Assembly
+    const mainGroup = new THREE.Group();
+    scene.add(mainGroup);
+
+    const darkMetal = new THREE.MeshStandardMaterial({ color: 0x1a1d24, metalness: 0.9, roughness: 0.25 });
+    const brightMetal = new THREE.MeshStandardMaterial({ color: 0x3a4150, metalness: 0.95, roughness: 0.15 });
+    const accentMetal = new THREE.MeshStandardMaterial({ color: 0x14171e, metalness: 0.85, roughness: 0.3 });
+
+    // Outer Gear Ring
+    const outerGroup = new THREE.Group();
+    mainGroup.add(outerGroup);
+
+    const ringGeo = new THREE.CylinderGeometry(2.4, 2.4, 0.4, 64, 1, true);
+    const ringMesh = new THREE.Mesh(ringGeo, darkMetal);
+    outerGroup.add(ringMesh);
+
+    // Outer Gear Teeth
+    const toothGeo = new THREE.BoxGeometry(0.18, 0.42, 0.24);
+    for (let i = 0; i < 28; i++) {
+      const angle = (i / 28) * Math.PI * 2;
+      const tooth = new THREE.Mesh(toothGeo, brightMetal);
+      tooth.position.set(Math.cos(angle) * 2.4, 0, Math.sin(angle) * 2.4);
+      tooth.rotation.y = -angle;
+      outerGroup.add(tooth);
+    }
+
+    // Middle Disc
+    const discGeo = new THREE.CylinderGeometry(2.1, 2.1, 0.1, 48);
+    const discMesh = new THREE.Mesh(discGeo, accentMetal);
+    mainGroup.add(discMesh);
+
+    // Inner Spline Group
+    const innerGroup = new THREE.Group();
+    innerGroup.position.y = 0.15;
+    mainGroup.add(innerGroup);
+
+    const hubGeo = new THREE.CylinderGeometry(1.2, 1.2, 0.5, 32);
+    const hubMesh = new THREE.Mesh(hubGeo, brightMetal);
+    innerGroup.add(hubMesh);
+
+    // Center Shaft
+    const shaftGeo = new THREE.CylinderGeometry(0.7, 0.7, 1.2, 32);
+    const shaftMesh = new THREE.Mesh(shaftGeo, brightMetal);
+    mainGroup.add(shaftMesh);
+
+    const nutGeo = new THREE.CylinderGeometry(0.45, 0.45, 0.18, 6);
+    const nutMesh = new THREE.Mesh(nutGeo, darkMetal);
+    nutMesh.position.y = 0.65;
+    mainGroup.add(nutMesh);
+
+    // Mouse Tracking
+    let mouseX = 0, mouseY = 0;
+    window.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouseY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+    });
+
+    // Resize Handler
+    window.addEventListener('resize', () => {
+      if (!canvas) return;
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    });
+
+    // Animation Loop
+    let clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const delta = clock.getDelta();
+      const elapsedTime = clock.getElapsedTime();
+
+      // Continuous Slow Rotation
+      mainGroup.rotation.y += delta * 0.3;
+      innerGroup.rotation.y -= delta * 0.4;
+
+      // Floating movement
+      mainGroup.position.y = Math.sin(elapsedTime * 1.2) * 0.12;
+
+      // Smooth mouse parallax
+      mainGroup.rotation.x += (mouseY * 0.3 + 0.3 - mainGroup.rotation.x) * 0.05;
+      mainGroup.rotation.z += (-mouseX * 0.4 - mainGroup.rotation.z) * 0.05;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>
